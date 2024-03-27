@@ -77,3 +77,12 @@ def send_mail_after_booking(user, context):
                         context=context,
                     )
     client.send()
+
+def send_mail_after_register(emailid, context):
+    client=SendEmail(
+                        to=emailid,
+                        subject="Hostel Registration",
+                        template="welcome",
+                        context=context,
+                    )
+    client.send()

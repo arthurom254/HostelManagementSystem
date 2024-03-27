@@ -3,9 +3,9 @@ from django.contrib import auth,messages
 from .models import UserRegistration,Room,Registration, Course,UserLog, Admin
 from django.utils import timezone
 from django.contrib.auth.models import User
-from .mails import send_mail_after_booking
+from .mails import send_mail_after_booking, send_mail_after_register
 from .mpesa import mpesa_pay
-
+from .passwordgen import generate_password
 from threading import Thread
 
 def login(request):
@@ -284,8 +284,8 @@ def admin_register_students_acc(request):
         gender = request.POST['gender']
         contactno = request.POST['contact']
         emailid = request.POST['email']
-        password = request.POST['password']
-        user=User.objects.create_user(first_name=fname, last_name=lname, username=emailid, email=emailid)
+        password = generate_password()
+        user=User.objects.create_user(first_name=fname, last_name=lname, username=emailid, email=emailid, password=password)
         user_reg=UserRegistration.objects.create(
             user=user,
             reg_no=regno,
@@ -294,9 +294,19 @@ def admin_register_students_acc(request):
             contact_no=contactno,
         )
         messages.success(request, 'Student has been Registered!')
-
+        c={
+            "first_name":fname,
+            "last_name":lname,
+            "username":emailid,
+            "login_url":f"{request.scheme}://{request.get_host()}" ,
+            "regno":regno,
+            "password":password
+        }
+        threadedmails=Thread(target=send_mail_after_register, args=(emailid, c) )
+        threadedmails.start()
         return redirect(admin_register_students_acc)
     context={
+
     }
     return render(request, 'administrator/register-student.html', context)
 
