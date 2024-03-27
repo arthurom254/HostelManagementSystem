@@ -1,0 +1,16 @@
+<script>
+    var currentTime = new Date();
+    var userTimezoneOffset = currentTime.getTimezoneOffset() * 60000;
+    currentTime = new Date(currentTime.getTime() - userTimezoneOffset);
+    var currentHour = currentTime.getHours();
+    console.log(currentHour)
+    var welcomeString;
+    if (currentHour >= 6 && currentHour < 12) {
+        welcomeString = "Good Morning";
+    } else if (currentHour >= 12 && currentHour < 18) {
+        welcomeString = "Good Afternoon";
+    } else {
+        welcomeString = "Good Evening";
+    }
+    document.write("<h3 class='page-title text-truncate text-dark font-weight-medium mb-1'>" + welcomeString + ", {{ user.first_name }}!</h3>");
+</script>

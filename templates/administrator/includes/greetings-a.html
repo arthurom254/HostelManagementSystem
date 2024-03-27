@@ -1,0 +1,24 @@
+<script>
+    function greetUser() {
+    var currentDate = new Date();
+    var currentHour = currentDate.getHours();
+    var period = currentHour >= 12 ? "PM" : "AM";
+    currentHour = currentHour % 12;
+    currentHour = currentHour ? currentHour : 12;
+
+    if (period === "AM") {
+        if (currentHour >= 5 && currentHour < 12) {
+            return "Good morning";
+        } else {
+            return "Good night";
+        }
+    } else { 
+        if (currentHour >= 12 && currentHour < 6) {
+            return "Good afternoon";
+        } else {
+            return "Good evening";
+        }
+    }
+}
+    document.write("<h3 class='page-title text-truncate text-dark font-weight-medium mb-1'>" + greetUser() + ", {{ user.first_name }}!</h3>");
+</script>

@@ -1,0 +1,13 @@
+<script>    
+    function phoneNumValidation(event){
+        var phoneNumber = document.getElementById('phoneNumber').value;
+
+        var regex = /^254\d{9}$/;
+
+        if (!regex.test(phoneNumber)) {
+            document.getElementById('error_phone').textContent = "Please enter a valid phone number in the format 254xxxxxxxxx";
+        } else {
+            document.getElementById('error_phone').textContent = ""; 
+        }
+    }
+</script>
