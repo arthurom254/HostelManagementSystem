@@ -16,7 +16,7 @@ def login(request):
         n='/student/dashboard'
         if user is not None:
             if user.is_superuser:
-                n='/admin/dashboard'
+                n='/administrator/dashboard'
         
         next=request.GET.get('next', n)
 
