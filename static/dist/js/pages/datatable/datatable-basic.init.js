@@ -1,27 +1,12 @@
-/*************************************************************************************/
-// -->Template Name: Bootstrap Press Admin
-// -->Author: Themedesigner
-// -->Email: niravjoshi87@gmail.com
-// -->File: datatable_basic_init
-/*************************************************************************************/
 
-/****************************************
- *       Basic Table                   *
- ****************************************/
 $('#zero_config').DataTable();
 
-/****************************************
- *       Default Order Table           *
- ****************************************/
 $('#default_order').DataTable({
     "order": [
         [3, "desc"]
     ]
 });
 
-/****************************************
- *       Multi-column Order Table      *
- ****************************************/
 $('#multi_col_order').DataTable({
     columnDefs: [{
         targets: [0],
@@ -35,8 +20,17 @@ $('#multi_col_order').DataTable({
     }]
 });
 
+new DataTable('#multi_buttonsa', {
+    layout: {
+        topStart: {
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+        }
+    }
+});
+
+
 $(document).ready(function() {
-    $('#multi_buttons').DataTable( {
+    $('#multi_buttonsa').DataTable( {
         dom: 'Bfrtip',
         columnDefs: [{
             targets: [0],

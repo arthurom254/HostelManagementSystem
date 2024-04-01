@@ -98,7 +98,7 @@
                             <a href="?new=new"><button type="button" class="btn btn-block btn-md btn-success">Add New Course Details</button></a>
                             <hr>
                                 <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-hover table-bordered no-wrap">
+                                    <table id="multi_buttons" class="table table-striped table-hover table-bordered no-wrap">
                                     <thead class="thead-dark">
                                             <tr>
                                                 <th>#</th>
@@ -173,7 +173,26 @@
     <script src="{% static 'dist/js/pages/dashboards/dashboard1.min.js' %}"></script>
     <script src="{% static 'assets/extra-libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
     <script src="{% static 'dist/js/pages/datatable/datatable-basic.init.js' %}"></script>
-
+    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.1/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.print.min.js"></script>
+    
+    <script>
+    new DataTable('#multi_buttons', {
+        layout: {
+            topStart: {
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+            }
+        }, "autoWidth": false
+    });
+    
+    
+    </script>
 </body>
 
 </html>
